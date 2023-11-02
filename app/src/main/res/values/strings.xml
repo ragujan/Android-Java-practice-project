@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">TestApp5</string>
+    <string name="introImgDescription">Intro Bg Image</string>
+    <string name="introImage">Intro image</string>
+    <string name="introButtonText">Get Started</string>
+    <string name="scrollViewLayout">scrollViewLayout</string>
+    <string name="menuBanner">menu banner image</string>
+    <string name="menuAvatar">menu avatar pfp</string>
+</resources>
