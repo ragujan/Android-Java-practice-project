@@ -6,4 +6,12 @@
     <string name="scrollViewLayout">scrollViewLayout</string>
     <string name="menuBanner">menu banner image</string>
     <string name="menuAvatar">menu avatar pfp</string>
+    <string name="cartName" >My Cart</string>
+    <string name="itemsTotalHeader">Items Total</string>
+    <string name="deliveryServicesHeader">Delivery Services</string>
+    <string name="taxHeader">Tax</string>
+    <string name="cartFinalTotalHeader">Total</string>
+    <string name="zeroDollar">0$</string>
+    <string name="checkoutBtnText">CheckOut</string>
+    <string name="cartItemTitle">Title</string>
 </resources>

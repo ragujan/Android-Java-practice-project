@@ -31,6 +31,9 @@
             </intent-filter>
 
         </activity>
+        <activity android:name=".activity.CartActivity">
+
+        </activity>
     </application>
 
 </manifest>

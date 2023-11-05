@@ -1,10 +1,13 @@
 package com.rag.testapp5.activity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridLayout;
 import android.widget.GridView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -45,6 +48,21 @@ public class MenuActivity extends AppCompatActivity {
         recyclerViewPopular();
         setRecylerViewTopSelling();
         recyclerViewGridItems();
+        binding.carBtnNavText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MenuActivity.this,CartActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        binding.cartBtnNav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MenuActivity.this,CartActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 

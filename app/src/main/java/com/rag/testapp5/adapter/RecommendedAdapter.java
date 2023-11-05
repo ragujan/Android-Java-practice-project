@@ -102,4 +102,5 @@ public class RecommendedAdapter extends RecyclerView.Adapter<RecommendedAdapter.
     public int getItemCount() {
         return recommendedFoodDomain.size();
     }
+
 }
