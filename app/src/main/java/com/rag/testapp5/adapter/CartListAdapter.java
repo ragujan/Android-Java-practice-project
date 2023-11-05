@@ -57,7 +57,7 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
             title = itemView.findViewById(R.id.cartItemTitle);
             pic = itemView.findViewById(R.id.cartItemImage);
             feeEacItem = itemView.findViewById(R.id.feeEachItem);
-            totalEachItem = itemView.findViewById(R.id.total);
+            totalEachItem = itemView.findViewById(R.id.totalFeeEachItem);
         }
     }
 }
