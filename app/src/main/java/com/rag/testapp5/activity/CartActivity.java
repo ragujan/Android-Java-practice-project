@@ -1,6 +1,8 @@
 package com.rag.testapp5.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -8,8 +10,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.rag.testapp5.adapter.CartListAdapter;
 import com.rag.testapp5.databinding.ActivityCartBinding;
 import com.rag.testapp5.helper.ManagementCart;
+import com.rag.testapp5.interfaces.ChangeNumberItemsListener;
 
 public class CartActivity extends AppCompatActivity {
     private RecyclerView.Adapter adapter;
@@ -32,6 +36,23 @@ public class CartActivity extends AppCompatActivity {
 
         initView();
         calculateCard();
+        initList();
+
+        binding.homeBtnNav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(CartActivity.this,MenuActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        binding.homeBtnNavText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(CartActivity.this,MenuActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void initView(){
@@ -50,6 +71,23 @@ public class CartActivity extends AppCompatActivity {
     private void initList(){
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerViewList.setLayoutManager(linearLayoutManager);
+        adapter = new CartListAdapter(managementCart.getListCart(), CartActivity.this, new ChangeNumberItemsListener() {
+            @Override
+            public void changed() {
+                calculateCard();
+
+            }
+        });
+        recyclerViewList.setAdapter(adapter);
+
+        if(managementCart.getListCart().isEmpty()){
+             emptyTxt.setVisibility(View.VISIBLE);
+             scrollView.setVisibility(View.GONE);
+        }else{
+            emptyTxt.setVisibility(View.GONE);
+            scrollView.setVisibility(View.VISIBLE);
+        }
+
 
     }
     private void calculateCard(){

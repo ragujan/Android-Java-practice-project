@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/burger" />
+        android:src="@drawable/burger" />
 
     <TextView
         android:id="@+id/cartItemTitle"
@@ -78,12 +78,11 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:id="@+id/imageView7"
+                android:id="@+id/minusItemBtn"
                 android:layout_width="41dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:src="@tools:sample/avatars"
-                app:srcCompat="@drawable/minus" />
+                android:src="@drawable/minus" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -92,7 +91,7 @@
                 android:layout_weight="1">
 
                 <TextView
-                    android:id="@+id/textView22"
+                    android:id="@+id/qtyNum"
                     android:layout_width="37dp"
                     android:layout_height="29dp"
                     android:layout_marginTop="4dp"
@@ -105,12 +104,11 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <ImageView
-                android:id="@+id/imageView9"
+                android:id="@+id/plusItemBtn"
                 android:layout_width="37dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:src="@tools:sample/avatars"
-                app:srcCompat="@drawable/plus" />
+                android:src="@drawable/plus" />
 
         </LinearLayout>
 

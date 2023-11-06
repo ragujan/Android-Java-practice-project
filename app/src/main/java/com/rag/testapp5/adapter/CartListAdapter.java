@@ -10,19 +10,21 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.rag.testapp5.R;
 import com.rag.testapp5.domain.FoodDomain;
 import com.rag.testapp5.helper.ManagementCart;
 import com.rag.testapp5.interfaces.ChangeNumberItemsListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHolder> {
-    List<FoodDomain> listFoodSelected;
+    ArrayList<FoodDomain> listFoodSelected;
     private ManagementCart managementCart;
     ChangeNumberItemsListener changeNumberItemsListener;
 
-    public CartListAdapter(List<FoodDomain> listFoodSelected, Context context, ChangeNumberItemsListener changeNumberItemsListener) {
+    public CartListAdapter(ArrayList<FoodDomain> listFoodSelected, Context context, ChangeNumberItemsListener changeNumberItemsListener) {
         this.listFoodSelected = listFoodSelected;
         this.managementCart = new ManagementCart(context);
         this.changeNumberItemsListener = changeNumberItemsListener;
@@ -31,12 +33,47 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
     @NonNull
     @Override
     public CartListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_cart,parent, false);
+        View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.viewholder_cart,parent, false);
+        System.out.println("Hey Hi Hi");
         return new ViewHolder(inflate);
     }
 
     @Override
     public void onBindViewHolder(@NonNull CartListAdapter.ViewHolder holder, int position) {
+        double itemFee = listFoodSelected.get(position).getFee();
+        int numberInCart = listFoodSelected.get(position).getNumberInCart();
+        holder.title.setText(listFoodSelected.get(position).getTitle());
+        holder.feeEacItem.setText("$ "+Double.toString(itemFee));
+        holder.totalEachItem.setText("$ "+Math.round(( numberInCart * itemFee )) );
+        holder.qtyNum.setText(Integer.toString(numberInCart));
+
+        int drawableResourceId = holder.itemView.getContext().getResources()
+                .getIdentifier(listFoodSelected.get(position).getPic(),"drawable",
+                        holder.itemView.getContext().getPackageName());
+
+        Glide.with(holder.itemView.getContext())
+                .load(drawableResourceId)
+                .into(holder.pic);
+
+        holder.plusItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                managementCart.plusNumberFood( listFoodSelected, holder.getAdapterPosition(), () -> {
+                    notifyDataSetChanged();
+                    changeNumberItemsListener.changed();
+                });
+            }
+        });
+
+        holder.minusItem.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                managementCart.minusNumberFood( listFoodSelected, holder.getAdapterPosition(), () -> {
+                    notifyDataSetChanged();
+                    changeNumberItemsListener.changed();
+                });
+            }
+        });
 
     }
 
@@ -49,7 +86,7 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
 
         TextView title, feeEacItem;
         ImageView pic, plusItem, minusItem;
-        ImageView totalEachItem, num;
+        TextView totalEachItem, qtyNum;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -58,6 +95,11 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
             pic = itemView.findViewById(R.id.cartItemImage);
             feeEacItem = itemView.findViewById(R.id.feeEachItem);
             totalEachItem = itemView.findViewById(R.id.totalFeeEachItem);
+            plusItem = itemView.findViewById(R.id.plusItemBtn);
+            minusItem = itemView.findViewById(R.id.minusItemBtn);
+            qtyNum = itemView.findViewById(R.id.qtyNum);
+
+
         }
     }
 }

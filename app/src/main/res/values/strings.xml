@@ -6,7 +6,7 @@
     <string name="scrollViewLayout">scrollViewLayout</string>
     <string name="menuBanner">menu banner image</string>
     <string name="menuAvatar">menu avatar pfp</string>
-    <string name="cartName" >My Cart</string>
+    <string name="cartName">My Cart</string>
     <string name="itemsTotalHeader">Items Total</string>
     <string name="deliveryServicesHeader">Delivery Services</string>
     <string name="taxHeader">Tax</string>
