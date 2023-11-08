@@ -39,25 +39,31 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
+                    android:layout_marginBottom="10dp"
                     android:text="Title"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
+<!--                <androidx.constraintlayout.widget.ConstraintLayout-->
+
+                <LinearLayout
+                    android:layout_width="300dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
                     android:layout_marginBottom="20dp"
-                    android:background="@drawable/grey_bar">
+                    android:background="@drawable/grey_bar"
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/detailViewAmount"
-                        android:layout_width="92dp"
-                        android:layout_height="54dp"
+                        android:id="@+id/detailViewTotalAmount"
+                        android:layout_width="67dp"
+                        android:layout_height="52dp"
+                        android:layout_weight="0.3"
                         android:gravity="center"
                         android:text="$0"
                         android:textColor="@color/black"
@@ -67,20 +73,21 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <LinearLayout
-                        android:layout_width="278dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="53dp"
+                        android:layout_weight="0.7"
                         android:background="@drawable/yellow_bar"
                         android:gravity="center"
                         android:orientation="horizontal"
-                        app:layout_constraintStart_toEndOf="@+id/detailViewAmount"
+                        app:layout_constraintStart_toEndOf="@+id/detailViewTotalAmount"
                         app:layout_constraintTop_toTopOf="parent">
 
                         <ImageView
-                            android:contentDescription="@string/minusButton"
                             android:id="@+id/detailMinusQtyBtn"
                             android:layout_width="21dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="1"
+                            android:layout_weight="0.33"
+                            android:contentDescription="@string/minusButton"
                             android:src="@drawable/minus" />
 
                         <androidx.constraintlayout.widget.ConstraintLayout
@@ -88,7 +95,11 @@
                             android:layout_height="match_parent"
                             android:layout_marginStart="12dp"
                             android:layout_marginEnd="12dp"
-                            android:layout_weight="1">
+                            android:layout_weight="0.33"
+                            android:clickable="true"
+
+                            android:paddingTop="5dp"
+                            android:paddingBottom="5dp">
 
                             <ImageView
                                 android:id="@+id/imageView9"
@@ -101,7 +112,7 @@
                                 app:layout_constraintTop_toTopOf="parent" />
 
                             <TextView
-                                android:id="@+id/textView22"
+                                android:id="@+id/detailViewQty"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
@@ -116,15 +127,17 @@
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                         <ImageView
-                            android:contentDescription="@string/plusButton"
                             android:id="@+id/detailPlusQtyBtn"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:layout_weight="1"
+                            android:layout_weight="0.33"
+                            android:contentDescription="@string/plusButton"
+                            android:duplicateParentState="true"
                             android:src="@drawable/plus" />
 
                     </LinearLayout>
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                </LinearLayout>
+<!--                </androidx.constraintlayout.widget.ConstraintLayout>-->
 
 
             </LinearLayout>
@@ -216,14 +229,16 @@
                 android:id="@+id/detailDescription"
                 android:layout_width="match_parent"
                 android:layout_height="78dp"
+                android:background="@color/white"
                 android:padding="20dp"
                 android:text="description"
                 android:textColor="#000000"
-                android:textSize="14sp" />
+                android:textSize="16sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@color/white"
                 android:orientation="horizontal">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -244,17 +259,19 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
                         android:text="@string/detailTotalPriceHeader"
+                        android:textColor="@color/white"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/textView30"
+                        android:id="@+id/detailViewPrice"
                         android:layout_width="86dp"
                         android:layout_height="26dp"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="8dp"
                         android:text="$ 40.00"
+                        android:textColor="@color/white"
                         android:textSize="20sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
@@ -263,6 +280,7 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/addToCartBtn"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginStart="8dp"
@@ -274,12 +292,12 @@
                     tools:layout_width="match_parent">
 
                     <ImageView
-                        android:contentDescription="@string/AddToCartImage"
                         android:id="@+id/imageView13"
                         android:layout_width="40dp"
                         android:layout_height="41dp"
                         android:layout_marginStart="24dp"
                         android:layout_marginTop="28dp"
+                        android:contentDescription="@string/AddToCartImage"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/cart_white" />

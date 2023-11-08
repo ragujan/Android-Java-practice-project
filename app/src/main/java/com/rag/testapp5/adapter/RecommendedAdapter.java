@@ -1,5 +1,7 @@
 package com.rag.testapp5.adapter;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.rag.testapp5.R;
+import com.rag.testapp5.activity.ShowDetailActivity;
 import com.rag.testapp5.domain.FoodDomain;
 
 import java.util.List;
@@ -33,7 +36,7 @@ public class RecommendedAdapter extends RecyclerView.Adapter<RecommendedAdapter.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder,int position) {
         holder.title.setText(recommendedFoodDomain.get(position).getTitle());
         holder.fee.setText(String.valueOf(recommendedFoodDomain.get(position).getFee()));
 
@@ -44,6 +47,17 @@ public class RecommendedAdapter extends RecyclerView.Adapter<RecommendedAdapter.
                             holder.itemView.getContext().getPackageName()
                     );
             Glide.with(holder.itemView.getContext()).load(drawableResourceId).into(holder.pic);
+
+
+            holder.addBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(holder.itemView.getContext(), ShowDetailActivity.class);
+                    intent.putExtra("object",recommendedFoodDomain.get(holder.getAdapterPosition()));
+                    holder.itemView.getContext().startActivity(intent);
+
+                }
+            });
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
