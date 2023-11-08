@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.rag.testapp5.adapter.CartListAdapter;
 import com.rag.testapp5.databinding.ActivityCartBinding;
 import com.rag.testapp5.helper.ManagementCart;
+import com.rag.testapp5.helper.Util;
 import com.rag.testapp5.interfaces.ChangeNumberItemsListener;
 
 public class CartActivity extends AppCompatActivity {
@@ -104,7 +105,7 @@ public class CartActivity extends AppCompatActivity {
        itemsTotalAmount.setText("$ "+Double.toString(itemTotal));
        taxAmount.setText("$ "+Double.toString(tax));
        deliveryServicesAmount.setText("$ "+Double.toString(deliveryCharge));
-       cartFinalTotalAmount.setText("$ "+Double.toString(deliveryCharge));
+       cartFinalTotalAmount.setText("$ "+ Util.twoDecimalPrice(total));
 
 
 

@@ -2,18 +2,21 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="16dp"
-    android:layout_marginTop="16dp"
-    android:layout_marginEnd="16dp"
-    android:layout_marginBottom="16dp"
-    android:background="@drawable/cart_background">
+    android:layout_marginStart="0dp"
+    android:layout_marginTop="0dp"
+    android:layout_marginEnd="0dp"
+    android:layout_marginBottom="0dp"
+    android:background="@drawable/cart_background"
+    android:paddingBottom="16dp">
 
     <ImageView
         android:id="@+id/cartItemImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
         android:src="@drawable/burger"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,21 +28,23 @@
         android:layout_marginStart="12dp"
         android:layout_marginTop="24dp"
         android:text="@string/cartItemTitle"
+        android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/cartItemImage"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/feeEachItem"
+        android:id="@+id/cartFeeEachItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/zeroDollar"
+        android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/cartItemTitle"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.808"
+        app:layout_constraintHorizontal_bias="0.855"
         app:layout_constraintStart_toEndOf="@+id/cartItemTitle"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
@@ -48,18 +53,20 @@
         android:id="@+id/totalFeeEachItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="144dp"
+        android:layout_marginStart="24dp"
         android:text="@string/zeroDollar"
+        android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/cartItemTitle"
-        app:layout_constraintTop_toBottomOf="@+id/feeEachItem"
-        app:layout_constraintVertical_bias="0.567" />
+        app:layout_constraintHorizontal_bias="0.739"
+        app:layout_constraintStart_toEndOf="@+id/constraintLayout"
+        app:layout_constraintTop_toBottomOf="@+id/cartFeeEachItem"
+        app:layout_constraintVertical_bias="0.578" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="wrap_content"
         android:layout_height="35dp"
         android:layout_marginStart="12dp"
@@ -81,23 +88,25 @@
                 android:id="@+id/minusItemBtn"
                 android:layout_width="41dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_weight="0.33"
                 android:src="@drawable/minus" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:layout_weight="1">
+                android:layout_weight="0.33"
+                android:paddingBottom="4dp">
 
                 <TextView
                     android:id="@+id/qtyNum"
-                    android:layout_width="37dp"
-                    android:layout_height="29dp"
+                    android:layout_width="39dp"
+                    android:layout_height="26dp"
                     android:layout_marginTop="4dp"
                     android:background="@drawable/round_background_qty"
                     android:gravity="center"
                     android:text="1"
+                    android:textColor="@color/black"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -107,7 +116,7 @@
                 android:id="@+id/plusItemBtn"
                 android:layout_width="37dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_weight="0.33"
                 android:src="@drawable/plus" />
 
         </LinearLayout>

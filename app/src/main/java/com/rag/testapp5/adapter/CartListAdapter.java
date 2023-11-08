@@ -17,7 +17,6 @@ import com.rag.testapp5.helper.ManagementCart;
 import com.rag.testapp5.interfaces.ChangeNumberItemsListener;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHolder> {
     ArrayList<FoodDomain> listFoodSelected;
@@ -40,15 +39,16 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull CartListAdapter.ViewHolder holder, int position) {
-        double itemFee = listFoodSelected.get(position).getFee();
-        int numberInCart = listFoodSelected.get(position).getNumberInCart();
-        holder.title.setText(listFoodSelected.get(position).getTitle());
+        FoodDomain foodDomain = listFoodSelected.get(position);
+        double itemFee = foodDomain.getFee();
+        int numberInCart = foodDomain.getNumberInCart();
+        holder.title.setText(foodDomain.getTitle());
         holder.feeEacItem.setText("$ "+Double.toString(itemFee));
         holder.totalEachItem.setText("$ "+Math.round(( numberInCart * itemFee )) );
         holder.qtyNum.setText(Integer.toString(numberInCart));
 
         int drawableResourceId = holder.itemView.getContext().getResources()
-                .getIdentifier(listFoodSelected.get(position).getPic(),"drawable",
+                .getIdentifier(foodDomain.getPic(),"drawable",
                         holder.itemView.getContext().getPackageName());
 
         Glide.with(holder.itemView.getContext())
@@ -93,7 +93,7 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.ViewHo
             super(itemView);
             title = itemView.findViewById(R.id.cartItemTitle);
             pic = itemView.findViewById(R.id.cartItemImage);
-            feeEacItem = itemView.findViewById(R.id.feeEachItem);
+            feeEacItem = itemView.findViewById(R.id.cartFeeEachItem);
             totalEachItem = itemView.findViewById(R.id.totalFeeEachItem);
             plusItem = itemView.findViewById(R.id.plusItemBtn);
             minusItem = itemView.findViewById(R.id.minusItemBtn);
