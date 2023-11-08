@@ -14,7 +14,7 @@
     <string name="zeroDollar">0$</string>
     <string name="checkoutBtnText">CheckOut</string>
     <string name="cartItemTitle">Title</string>
-    <string name="detailTotalPriceHeader">Total Price</string>
+    <string name="detailTotalPriceHeader">Price</string>
     <string name="addToCartBtnText">Add To Cart</string>
 
 </resources>
